@@ -1,5 +1,5 @@
 class Admin::RestaurantsController < ApplicationController
-  before_action :set_restaurant, :only => [:show, :edit, :update]
+  before_action :set_restaurant, :only => [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :authenticate_admin
 
@@ -40,7 +40,7 @@ class Admin::RestaurantsController < ApplicationController
 
   def destroy
     @restaurant.destroy
-    flash[:notice] = "刪除餐廳該筆資料成功。"
+    flash[:alert] = "刪除餐廳該筆資料成功。"
     redirect_to admin_restaurants_path
   end
   private
