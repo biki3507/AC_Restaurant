@@ -1,4 +1,5 @@
 class Admin::RestaurantsController < ApplicationController
+  before_action :set_restaurant, :only => [:show, :edit, :update]
   before_action :authenticate_user!
   before_action :authenticate_admin
 
@@ -22,16 +23,35 @@ class Admin::RestaurantsController < ApplicationController
   end
 
   def show
-    set_restaurant
   end
 
+  def edit
+  end
+
+  def update
+    if @restaurant.update(restaurant_params)
+      flash[:notice] = "更新餐廳資料成功！"
+      redirect_to admin_restaurant_path(@restaurant)
+    else
+      flash.now[:alert] = "更新未成功"
+      render :edit
+    end
+  end
+
+  def destroy
+    @restaurant.destroy
+    flash[:notice] = "刪除餐廳該筆資料成功。"
+    redirect_to admin_restaurants_path
+  end
   private
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
+  end
 
   def restaurant_params
     params.require(:restaurant).permit(:name, :tel, :opening_hours, :address, :description)
   end
 
-  def set_restaurant
-    @restaurant = Restaurant.find(params[:id])
-  end
+
 end
