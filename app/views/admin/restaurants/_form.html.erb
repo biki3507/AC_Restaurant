@@ -8,20 +8,24 @@
 <% end %>
 
 <%= form_for [:admin, @restaurant] do |f| %>
-  <%= f.label :name, "Name" %>
+  <%= f.label :name, "餐廳名稱" %>
   <%= f.text_field :name %>
-  
+  <br>
+  <%= f.label :image, "形象照片" %>
+  <%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
+  <%= f.file_field :image %>
+  <br>
   <%= f.label :tel, "電話" %>
   <%= f.text_field :tel %>
-
+  <br>
   <%= f.label :address, "地址" %>
   <%= f.text_field :address %>
-
+  <br>
   <%= f.label :opening_hours, "營業時間" %>
   <%= f.text_field :opening_hours %>
-
+  <br>
   <%= f.label :description, "餐廳描述" %>
   <%= f.text_field :description %>
-
+  <br>
   <%= f.submit %>
 <% end %>
