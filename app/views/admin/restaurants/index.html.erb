@@ -9,7 +9,10 @@
     <%= link_to '編輯', edit_admin_restaurant_path(restaurant) %>
     <%= link_to '刪除', admin_restaurant_path(restaurant), method: :delete, data: {confirm: "你確定要刪除嗎？"} %>
   </li>
+
+
   <% end %>
 </ul>
 
 <%= link_to "新增新的餐廳", new_admin_restaurant_path %>
+<%= paginate @restaurants, outer_window: 3 %>
