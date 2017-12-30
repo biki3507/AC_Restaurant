@@ -1,16 +1,16 @@
 namespace :dev do
   task fake: :environment do
     Restaurant.destroy_all
+
     500.times do |i|
-      Restaurant.create!(
-        name: "restaurant#{i.to_s}",
-        opening_hours: "11:00",
-        tel: "02-1234-567#{i.to_s}",
-        address: "my_address",
-        description: "Restaurant description"
+      Restaurant.create!(name: FFaker::Name.first_name,
+        opening_hours: FFaker::Time.datetime,
+        tel: FFaker::PhoneNumber.short_phone_number,
+        address: FFaker::Address.street_address,
+        description: FFaker::Lorem.paragraph
       )
     end
-  puts "成功建立餐廳資料"
-  puts "現在，你有#{Restaurant.count}筆資料了。"
+    puts "餐廳資料成功建立"
+    puts "now you have #{Restaurant.count} restaurants data"
   end
 end
