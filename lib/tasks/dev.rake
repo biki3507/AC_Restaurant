@@ -9,7 +9,7 @@ namespace :dev do
         address: FFaker::Address.street_address,
         description: FFaker::Lorem.paragraph,
         category: Category.all.sample,
-        remote_image_url: 'https://visualhunt.com/photos/l/7/architecture-store-building.jpg'
+        image: File.open(Rails.root.join("public/seed-img/0#{rand(1..9)}.jpg"))
       )
     end
     puts "餐廳資料成功建立"
