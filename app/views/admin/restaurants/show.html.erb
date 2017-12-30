@@ -1,18 +1,35 @@
-<h1><%= @restaurant.name %></h1>
-
-<%= image_tag @restaurant.image, width: '600px' %>
-<br>
-營業時間：
-<%= @restaurant.opening_hours %>
-<br>
-餐廳電話：
-<%= @restaurant.tel %>
-<br>
-餐廳地址：
-<%= @restaurant.address %>
-<br>
-餐廳描述：
-<%= @restaurant.description %>
-
-<br>
-<%= link_to '回餐廳總覽', admin_restaurants_path %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1><%= @restaurant.name %></h1>
+            <p> <%= @restaurant.category.name %></p>
+        </div>
+        <div class="col-md-4">
+            <%= image_tag @restaurant.image, class: "img-responsive center-block" %>
+            <br>
+            <div class="restaurant-item">
+                <ul class="list-unstyled">
+                    <li><strong>營業時間：</strong>
+                        <%= @restaurant.opening_hours %>
+                    </li>                    
+                    <li><strong>聯絡電話：</strong>
+                        <%= @restaurant.tel %>
+                    </li>
+                    <li><strong>餐廳地址：</strong>
+                        <%= @restaurant.address %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <!-- simple_format 可以將一些特殊符號轉為html，例如\n換行符號轉為html的<br> -->
+            <!-- https://ihower.tw/rails/actionview-helpers.html -->
+            <%= simple_format @restaurant.description %>
+        </div>
+        
+        
+        <div class="clearfix"></div>
+        <%= link_to '回餐廳總覽', admin_restaurants_path %>
+        </div>
+    </div>
+</div>
