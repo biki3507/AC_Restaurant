@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'carrierwave'
 gem 'kaminari'
-gem 'bootstrap-sass', '~> 3.3.7'
+gem 'bootstrap', '~> 4.0.0.beta3'
 gem 'jquery-rails'
 gem 'ffaker'
 
