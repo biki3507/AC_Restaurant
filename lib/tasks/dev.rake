@@ -8,10 +8,11 @@ namespace :dev do
         tel: FFaker::PhoneNumber.short_phone_number,
         address: FFaker::Address.street_address,
         description: FFaker::Lorem.paragraph,
-        category: Category.all.sample
+        category: Category.all.sample,
+        image: File.open(Rails.root.join("public/seed-img/0#{rand(1..9)}.jpg"))
       )
     end
     puts "餐廳資料成功建立"
-    puts "now you have #{Restaurant.count} restaurants data"
+    puts "You have #{Restaurant.count} restaurants data"
   end
 end
