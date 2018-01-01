@@ -10,6 +10,14 @@
   <%= f.label :name, "餐廳名稱" %>
   <%= f.text_field :name %>
   <br>
+  <%= f.collection_select(
+    :category_id,
+    Category.all,
+    :id,
+    :name,
+    options = {prompt: "請選擇餐廳分類"},
+    html_option = {class: "form-control"}
+  ) %>
   <%= f.label :image, "形象照片" %>
   <%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
   <%= f.file_field :image %>
