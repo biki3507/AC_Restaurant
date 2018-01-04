@@ -3,7 +3,9 @@
     <% @restaurants.each do |restaurant| %>
     <div class="col-sm-6 col-md-4">
         <div class="restaurant-item">
-            <%= image_tag restaurant.image, class: "img-responsive center-block" %>
+            <%= link_to restaurant_path(restaurant) do %>
+                <%= image_tag restaurant.image, class: "img-fluid center-block" %>
+            <% end %>
             <div class="restaurant-caption">
                 <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
                 <p class="label label-default"><%= restaurant.category.name %></p>
