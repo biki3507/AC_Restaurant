@@ -1,35 +1,16 @@
 <div class="container">
-<div class="row">
-    <div class="categories">
-            <ul class="nav nav-pills justify-content-center" role="navigation">
-                <li class="nav-item"><%= link_to "全部餐廳", root_path, class: 'nav-link active' %></li>
-                <% @categories.each do |category| %>
-                    <li class="nav-item"><%= link_to category.name, category_path(category), class: 'nav-link' %></li>
-                <% end %>
-            </ul>
-    </div>
-    <% @restaurants.each do |restaurant| %>
-    <div class="col-sm-6 col-md-4">
-        
-        <div class="restaurant-item">
-            <%= link_to restaurant_path(restaurant) do %>
-                <%= image_tag restaurant.image, class: "img-fluid center-block" %>
-            <% end %>
-            <div class="restaurant-caption">
-                <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
-                <p class="label label-default"><%= restaurant.category.name %></p>
-                <p><%= truncate(restaurant.description, length: 80) %></p>
-            </div>
-        </div>
-    </div>
-    <% end %>
+  <div class="row">
 
-    <div class="text-center">
-        <%= paginate @restaurants %>
-    </div>
+    <ul class="nav nav-pills justify-content-center categories">
+      <li role="presentation" class="nav-item"><%= link_to "全部餐廳", root_path, class: "active nav-link" %></li>
+      <% @categories.each do |category| %>
+        <li role="presentation" class="nav-item"><%= link_to category.name, category_path(category), class: "nav-link" %></li>
+      <% end %>
+    </ul>
+
+    <br>
+
+    <%= render partial: "shared/restaurant_list" %>
+    
+  </div>
 </div>
-</div>
-
-
-
-

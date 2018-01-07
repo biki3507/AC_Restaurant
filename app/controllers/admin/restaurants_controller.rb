@@ -15,7 +15,7 @@ class Admin::RestaurantsController < Admin::BaseController
       flash[:notice] = "新的餐廳紀錄已成功建立"
       redirect_to admin_restaurants_path
     else
-      flash.now[:alert] = "很抱歉，有輸入錯誤，餐廳建立失敗"
+      flash.now[:alert] = "很抱歉，輸入錯誤，餐廳建立失敗"
       render :new
     end
   end
